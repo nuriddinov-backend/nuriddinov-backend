@@ -1,0 +1,40 @@
+{#<section>#}
+{#  <div>#}
+{#    <center>010 020 0960 | <a href="mailto:hello@company.com">hello@company.com</a></center>#}
+{#  </div>#}
+{##}
+{#  <div class="social-links">#}
+{#      <center><a href="#" class="social-link">Dribbble</a></center>#}
+{#      <center><a href="#" class="social-link">Instagram</a></center>>#}
+{#      <center><a href="#" class="social-link">YouTube</a></center>>#}
+{#  </div>#}
+{#</section>#}
+<footer class="footer py-5">
+  <div class="social-links">
+        {% for social in social_links %}
+            <center>
+                <a href="{{ social.link }}" class="social-link">
+                    <img src="{{ social.photo.url }}" alt="{{ social.title }}" width="20" height="20">
+                    {{ social.title }}
+                </a>
+            </center>
+        {% endfor %}
+    </div>
+
+    {% if contact %}
+    <div>
+        <center>
+            {{ contact.phone_number }} | <a href="mailto:{{ contact.email }}">{{ contact.email }}</a><br>
+            {{ contact.address }}
+        </center>
+    </div>
+    {% endif %}
+          <div class="container">
+               <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <p class="copyright-text text-center">&copy; 2025 nuriddinov.com</p>
+                    </div>
+
+               </div>
+          </div>
+     </footer>

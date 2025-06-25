@@ -1,0 +1,119 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Nuriddinov's Blog{%endblock%}
+{% block content %}
+
+
+
+    <!-- ABOUT -->
+   <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 d-flex align-items-center">
+                <div class="about-text">
+                    <small class="small-text">{{ about_data.description }}</small>
+                    <h1 class="animated animated-text" style="white-space: nowrap">
+                        <span>Salom, Men</span>
+                        <div class="animated-info" style="width: 100%">
+                            <span class="animated-item">{{ about_data.name1 }}</span>
+                            <span class="animated-item">{{ about_data.name2 }}</span>
+                        </div>
+                    </h1>
+
+                    <p>{{ about_data.text }}</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="about-image svg">
+                    {% if about_data.photo %}
+                        <img src="{{ about_data.photo.url }}" class="img-fluid" alt="Profile Photo">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+ <section class="project py-5" id="project">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-11 text-center mx-auto col-12">
+
+                <div class="col-lg-8 mx-auto">
+                    <h2>{{ index_data.text_projects }}</h2>
+                </div>
+
+                <div class="owl-carousel owl-theme">
+
+                    {% for project in projects %}
+                        <div class="item">
+                            <div class="project-info">
+                                <img src="{{ project.photo.url }}" class="img-fluid" alt="{{ project.title }}" >
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- FEATURES -->
+    <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="resume">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-12">
+                <h2 class="mb-4">Experiences</h2>
+
+                <div class="timeline">
+                    {% for resume in resume_list %}
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>{{ resume.year }}</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>{{ resume.position }}</span></h3>
+                                <p>{{ resume.description }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- POSTS -->
+<div class="container mt-5">
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ post.photo.url }}" class="card-img-top" alt="{{ post.title }}">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.text|truncatewords:20 }}</p>
+                    <a href="{% url 'post_detail' post.pk %}" class="btn btn-sm btn-outline-primary">Batafsil</a>
+                </div>
+                <div class="card-footer text-muted small">
+                    {{ post.date }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

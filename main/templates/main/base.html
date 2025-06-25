@@ -1,0 +1,59 @@
+{% load static %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/unicons.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/carousel.css' %}">
+
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" href="{% static 'main/css/tooplate-style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<main class="site-main">
+{% include 'main/header.html' %}
+
+{% block content %}
+
+{% endblock %}
+</main>
+
+<footer class="site-footer">
+{% include 'main/footer.html' %}
+</footer>
+
+
+    <script src="{% static 'main/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'main/js/popper.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'main/js/Headroom.js' %}"></script>
+    <script src="{% static 'main/js/jQuery.headroom.js' %}"></script>
+    <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'main/js/smoothscroll.js' %}"></script>
+    <script src="{% static 'main/js/custom.js' %}"></script>
+    <script>
+      $(document).ready(function () {
+        $("#news-slider").owlCarousel({
+          items: 3,
+          itemsDesktop: [1199, 3],
+          itemsDesktopSmall: [1000, 2],
+          itemsMobile: [650, 1],
+          pagination: false,
+          navigationText: false,
+          autoPlay: true
+        });
+      });
+    </script>
+
+</body>
+</html>
